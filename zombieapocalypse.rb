@@ -29,9 +29,39 @@ class Zombie
       if temp_speed > @speed
         return true
       else
-        @@horde << self.class.new(rand(1..@@max_strength))
+        @@horde << self.class.new(rand(1..@@max_speed), rand(1..@@max_strength))
         return false
       end
     end
     def survive_attack?
-      temp
+      temp_speed = rand(1..@@max_speed)
+      if temp_str > @strength
+        return true
+      else
+        return false
+      end
+    end
+    #class methods
+    def self.all
+      return @@horde
+    end
+    def self.new_day
+      self.some_die_off
+      self.spawn
+      self.increase_plague_level
+    end
+    def self.some_die_off
+      (rand(0..10)).times {
+        @@horde.shift
+      }
+    end
+    def self.spawn
+      num_new_z = rand ((@@plague_level/2)..@@plague_level)
+      num_new_z.times {
+        @@horde << self.new(rand(1..@@max_speed), rand(1..@@max_strength))
+      }
+    end
+    def self.increase_plague_level
+      @@plague_level += rand(0..2)
+    end
+  end
