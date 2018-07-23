@@ -16,4 +16,4 @@ zombie2 = Zombie.all[1]
 zombie3 = Zombie.all[2]
 puts zombie1.encounter
 puts zombie2.encounter
-puts zombie3.encounter 
+puts zombie3.encounter
