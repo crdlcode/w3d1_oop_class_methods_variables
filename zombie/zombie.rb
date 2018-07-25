@@ -65,3 +65,4 @@ class Zombie
       @@plague_level += rand(0..2)
     end
   end
+  
